@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "usuarioMock",
+      "password": "123456",
+      "token": "TOKEN_DE_PRUEBA_LOCAL"
+    }
+    
+  ],
+  "clientes": []
+}

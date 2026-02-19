@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
-import Clientes from "../pages/Clientes";
-import ClienteForm from "../pages/ClienteForm";
+import Clientes from "../features/clientes/pages/Clientes";
+import ClienteForm from "../features/clientes/pages/ClienteForm";
 import NotFound from "../pages/NotFound";
-import PrivateRoute from "../components/PrivateRoute";
+import PrivateRoute from "../components/auth/PrivateRoute";
 
 const AppRouter = () => (
   <BrowserRouter>

@@ -9,8 +9,14 @@ export const loginRequest = async (username, password) => {
 
   if (!user) throw new Error("Credenciales incorrectas");
 
-  return user;
+  return {
+    token: user.token,
+    userid: user.id,
+    username: user.username,
+    expiration: new Date(Date.now() + 3600 * 1000).toISOString()
+  };
 };
+
 
 export const registerRequest = async (username, password) => {
   const response = await fetch("http://localhost:4000/users");

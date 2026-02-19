@@ -27,27 +27,50 @@ El objetivo principal es ofrecer una experiencia fluida para la administración 
 
 src/
 │
+├─ app/
+│   ├─ App.jsx                  # Punto principal de la aplicación. Integra providers globales y el router.
+│   ├─ AppRouter.jsx            # Definición centralizada de todas las rutas del sistema.
+│   └─ config.js                # Configuración global (URL API, variables generales).
+│
 ├─ components/
-│   ├─ DashboardLayout.jsx      # Layout principal con AppBar y Drawer
-│   ├─ ConfirmDialog.jsx        # Modal de confirmación
-│   └─ ...                      # Otros componentes compartidos
+│   │
+│   ├─ layout/
+│   │   └─ DashboardLayout.jsx  # Layout principal con AppBar, Drawer y estructura general.
+│   │
+│   ├─ auth/
+│   │   └─ PrivateRoute.jsx     # Protege rutas privadas verificando autenticación.
+│   │
+│   └─ ui/
+│       └─ ConfirmDialog.jsx    # Modal reutilizable para confirmaciones (eliminar, cerrar sesión, etc).
 │
 ├─ context/
-│   └─ AuthContext.jsx          # Contexto de autenticación
+│   └─ AuthContext.jsx          # Manejo del estado global de autenticación (login, logout, usuario).
+│
+├─ features/
+│   └─ clientes/
+│       │
+│       ├─ pages/
+│       │   ├─ Clientes.jsx     # Pantalla de listado y consulta de clientes.
+│       │   └─ ClienteForm.jsx  # Formulario para crear y editar clientes.
+│       │
+│       └─ services/
+│           └─ clienteService.js # Funciones CRUD conectadas al endpoint /clientes.
 │
 ├─ pages/
-│   ├─ Home.jsx                 # Dashboard de bienvenida
-│   ├─ Clientes.jsx             # Consulta de clientes
-│   ├─ ClienteForm.jsx          # Formulario para crear/editar clientes
-│   └─ NotFound.jsx             # Página 404
+│   ├─ Login.jsx                # Página de inicio de sesión.
+│   ├─ Register.jsx             # Registro de nuevos usuarios.
+│   ├─ Home.jsx                 # Dashboard o página principal después del login.
+│   └─ NotFound.jsx             # Página mostrada cuando la ruta no existe (404).
 │
 ├─ services/
-│   ├─ clienteService.js        # Funciones CRUD para clientes
-│   └─ axiosConfig.js           # Configuración base de axios
+│   ├─ axiosConfig.js           # Instancia global de axios con baseURL e interceptores.
+│   └─ authService.js           # Servicios de autenticación (login, registro, sesión).
 │
-├─ App.jsx                      # Configuración de rutas y providers
-├─ index.js                     # Punto de entrada de React
-└─ ...                          # Otros archivos de configuración
+├─ index.js                     # Punto de entrada de React que renderiza la aplicación.
+│
+├─ db.json                      # Base de datos simulada usada por JSON Server.
+├─ package.json                 # Dependencias y scripts del proyecto.
+└─ README.md                    # Documentación del proyecto.
 
 ````
 
@@ -100,7 +123,7 @@ npm install
 3. Iniciar la API simulada con `json-server`:
 
 ```bash
-npx json-server --watch db.json --port 3001
+npx json-server --watch db.json --port 4000
 ```
 
 4. Ejecutar la app:

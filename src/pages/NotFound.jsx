@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Box } from "@mui/material";
-import DashboardLayout from "../components/DashboardLayout";
+import DashboardLayout from "../components/ui/DashboardLayout";
 
 const NotFound = () => {
   return (
